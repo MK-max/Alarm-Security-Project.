@@ -2,8 +2,8 @@
 const int trigPin = 6; //Ultrasonic Distance
 const int echoPin = 5; //Ultrasonic Distance
 const int buzzer = 9; // Active Buzzer
-const int ledPinW = 13; //ไฟสีขาวดวงที่1
-const int ledPinR = 12; //ไปสีแดงดวงที่1
+const int ledPinW = 12; //ไฟสีขาวดวงที่1
+const int ledPinR = 13; //ไปสีแดงดวงที่1
 const int ledPinWW = 10; //ไฟสีขาวดวงที่2
 const int ledPinRR = 11; ////ไปสีแดงดวงที่2
 
