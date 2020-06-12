@@ -39,8 +39,6 @@ Alarm Security คือ ระบบดูแลด้านความปล�
   -7-Segment Display
   
 ### โครงสร้างพื้นฐาน
-![ภาพรวมโฟชาร์ต](https://user-images.githubusercontent.com/61343479/84517482-954e6b00-acf9-11ea-8bdf-ae1998383659.jpg)
-
 
 ### ระบบการทำงาน
 ![messageImage_1591973004584](https://user-images.githubusercontent.com/61343479/84516251-bb730b80-acf7-11ea-9dfa-71ecca666fcb.jpg)
