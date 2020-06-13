@@ -1,22 +1,22 @@
-#include <Servo.h>
+#include <Servo.h>  //เรียกไลบรารี่ ชื่อ servo.h เข้ามาใช้ในโปรแกรม
 Servo myservo; //สร้างตัวServo เพิ่อควบคุมServoของเราเอง
 
 int degree = 0; // ตัวแปรจัดเก็บค่าองศาServo
 void setup(){
-    myservo.attach(4,0,180);  //กำหนดขาสัญญาณ(Pin9)ที่ Servo Motor ต่อกับ Arduino และกำหนดความกว้างของพัลซ์ที่ 0 องศาและ 180 องศา (pin,min,max)                   
+    myservo.attach(4,0,180);  //กำหนดขาสัญญาณ(Pin4)ที่ Servo Motor ต่อกับ Arduino และกำหนดความกว้างของพัลซ์ที่ 0 องศาและ 180 องศา (pin,min,max)                   
 }
  
 void loop(){
     for(degree = 0; degree < 180; degree += 1) // เริ่มต้นที่ 0 องศา เงื่อนไขคือหมุนไปไม่เกิน 180 องศา โดยให้เพิ่มที่ละ 1 องศา(ขาไป)
     {
         myservo.write(degree); // บอกให้Servoไปที่ตำแหน่งองศา ()
-        delay(30); // 15ms
+        delay(100); // 15ms
     }
 
     for(degree = 180; degree >= 1; degree -= 1)// เริ่มต้นที่ 180 องศา เงื่อนไขคือหมุนกลับไปไม่เกิน 180 องศา โดยให้เพิ่มที่ละ 1 องศา(ขาไป)
     {
         myservo.write(degree);
-        delay(30); 
+        delay(100); 
     }
 }
 
