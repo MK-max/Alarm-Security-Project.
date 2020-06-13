@@ -1,7 +1,8 @@
 const int buzzer = 9;
 
 void setup(){
-    pinMode(buzzer, OUTPUT);   
+    pinMode(buzzer, OUTPUT);
+    Serial.begin(9600);   
     //delay(1000);
 }
 
