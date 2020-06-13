@@ -1,4 +1,4 @@
-#include "TM1637.h"
+#include "TM1637.h" //เรียนไลบรารี่เข้ามาใช้ในโปรแกรม
 
 const int CLK = 17; //ขาA3
 const int DIO = 16; //ขาA2
@@ -18,10 +18,10 @@ void setup() {
   //sevenSegment.displayStr("0FF");
   //delay(2000);
 
-  sevenSegment.displayStr("S0S");
-  delay(2000);
-  sevenSegment.displayStr("HELP");
-  delay(2000); 
+  //sevenSegment.displayStr("S0S");
+  //delay(2000);
+  //sevenSegment.displayStr("HELP");
+  //delay(2000); 
 }
 
 //int number = 0;
