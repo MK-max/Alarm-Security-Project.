@@ -1,6 +1,6 @@
 // ประกาศตัวแปรกับขาPin 
 const int flamePin = 3; //สัญญาณตรวจจับไฟ
-const int buzzerPin = 9; //buzzer(ตัวปล่อยเสียง)เชื่อมกับขาPin11
+const int buzzerPin = 9; //buzzer(ตัวปล่อยเสียง)เชื่อมกับขาPin9
 const int ledPinW = 12; //แสงไฟสีขาว
 const int ledPinY = 7; //แสดงไฟสีเหลือง
 const int ledPinWW = 10; //แสงไฟสีขาว2
