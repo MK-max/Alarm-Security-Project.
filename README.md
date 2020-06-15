@@ -39,7 +39,7 @@ Alarm Security คือ ระบบดูแลด้านความปล�
   -7-Segment Display
   
 ### โครงสร้างพื้นฐาน
-![อิอิ](https://user-images.githubusercontent.com/61343479/84628902-a83c8780-af13-11ea-9148-1dd7cc4985e8.jpg)
+![Flowchat (แบบแก้แล้ว)](https://user-images.githubusercontent.com/61343479/84684579-093f7c00-af63-11ea-9159-21a77bc43566.jpg)
 
 ### ระบบการทำงาน
 ![messageImage_1591973004584](https://user-images.githubusercontent.com/61343479/84516251-bb730b80-acf7-11ea-9dfa-71ecca666fcb.jpg)
