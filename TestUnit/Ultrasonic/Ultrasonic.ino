@@ -54,7 +54,7 @@ int safetyDistance; //ระยะที่ปลอดภัย
     } 
 // Prints the distance on the Serial Monitor
 Serial.print("Distance: "); //แสดงบรรทัด
-Serial.println(distance); //แสดงฟังก์ชันการทำงานแถวข้างบน   
+Serial.println(distance); //แสดงข้อมูลตัวแปร distance  
 }
 
 // ความเร็วเสียงในอากาศประมาณ 340 เมตร/วินาที
