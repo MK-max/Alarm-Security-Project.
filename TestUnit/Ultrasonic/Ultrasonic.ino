@@ -1,7 +1,6 @@
 //defines pins number(กำหนดขาหมายเลขPin เพื่อสั่งการทำงาน)
 const int trigPin = 6; //Ultrasonic Distance
 const int echoPin = 5; //Ultrasonic Distance
-const int buzzer = 9; // Active Buzzer
 const int ledPinW = 12; //ไฟสีขาวดวงที่1
 const int ledPinR = 13; //ไปสีแดงดวงที่1
 const int ledPinWW = 10; //ไฟสีขาวดวงที่2
@@ -15,7 +14,6 @@ int safetyDistance; //ระยะที่ปลอดภัย
  void setup(){
     pinMode(trigPin, OUTPUT); //ให้แสดงผล ค่าระยะวัตถุเข้าใกล้
     pinMode(echoPin, INPUT); //ให้รับข้อมูล ค่่าระยะวัตถุเข้าใกล้
-    pinMode(buzzer,OUTPUT); //แสดงเสียง
     pinMode(ledPinW,OUTPUT); //แสดงไฟสีขาว1
     pinMode(ledPinR,OUTPUT); //แสดงไฟสีแดง1
     pinMode(ledPinWW,OUTPUT); //แสดงไฟสีขาว2
@@ -39,14 +37,12 @@ int safetyDistance; //ระยะที่ปลอดภัย
 
     safetyDistance = distance; //ให้ระยะที่ปลอดภัยรับค่าจากค่าระยะทาง
     if (safetyDistance <= 20){ //ถ้าระยะท่่ปลอดภัยเข้ามาในระยะไม่เกินหรือเท่ากับ 20 cm.
-        digitalWrite(buzzer, 1);
         digitalWrite(ledPinW, 1);
         digitalWrite(ledPinR, 1);
         digitalWrite(ledPinWW, 1);
         digitalWrite(ledPinRR, 1);
     }
     else{
-        digitalWrite(buzzer, 0);
         digitalWrite(ledPinW, 0);
         digitalWrite(ledPinR, 0);
         digitalWrite(ledPinWW, 0);
@@ -54,7 +50,7 @@ int safetyDistance; //ระยะที่ปลอดภัย
     } 
 // Prints the distance on the Serial Monitor
 Serial.print("Distance: "); //แสดงบรรทัด
-Serial.println(distance); //แสดงข้อมูลตัวแปร distance  
+Serial.println(distance); //แสดงข้อมูลตัวแปร  
 }
 
 // ความเร็วเสียงในอากาศประมาณ 340 เมตร/วินาที
