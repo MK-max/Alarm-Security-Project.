@@ -108,7 +108,7 @@ void loop(){
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
             sevenSegment.displayStr(""); 
-            delay(100);         
+            delay(10);         
         }
         //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
         //Serial.print("Distance: "); 
@@ -174,7 +174,7 @@ void loop(){
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
             sevenSegment.displayStr(""); 
-            delay(100);       
+            delay(10);       
         }
         //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
         //Serial.print("Distance: "); 
