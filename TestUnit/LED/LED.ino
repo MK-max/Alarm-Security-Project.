@@ -21,12 +21,12 @@ void loop(){
     digitalWrite(ledPinRR, 1);
     digitalWrite(ledPinY, 1);
     digitalWrite(ledPinYY, 1);
-    delay(500);
+    delay(500); //หน่วงเวลา 0.5 วินาที
     digitalWrite(ledPinW, 0);
     digitalWrite(ledPinWW, 0);
     digitalWrite(ledPinR, 0);
     digitalWrite(ledPinRR, 0);
     digitalWrite(ledPinY, 0);
     digitalWrite(ledPinYY, 0);
-    delay(500);   
+    delay(500); //หน่วงเวลา 0.5 วินาที   
 }
