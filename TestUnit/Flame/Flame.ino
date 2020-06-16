@@ -58,7 +58,7 @@ const int ledPinYY = 2; //แสดงไฟสีเหลือง2
 int flameReading; //อ่านค่าอนาล็อกจากตัวแบ่งตัวต้านทางแบบอนาล็อก
 
 
- void setup() {
+void setup() {
     pinMode(flamePin, INPUT); //รับค่า flamePin
     pinMode(buzzerPin, OUTPUT);
     pinMode(ledPinW, OUTPUT);
@@ -68,23 +68,24 @@ int flameReading; //อ่านค่าอนาล็อกจากตัว
     Serial.begin(9600);  //กำหนดอัตราความเร็วในการสื่อสาร   
 }
  
- void loop() {
+void loop() {
   flameReading = analogRead(flamePin); //กำหนดให้ flameReading อ่านค่าสัญญาณอนาล็อกที่ขา a0 จากตัวแปร flamePin 
   if (flameReading <= 500 ) //กำหนด ถ้า flameReading อ่านค่าได้ไม่เกินหรือเท่ากับ 500 (ดูที่จอ Serial Monitor)
-     {
-         digitalWrite(buzzerPin, 1); //เปิดเสียงด้วยคำสั่ง digitalWrite (หยาบ 0 กับ 1)
-         analogWrite(ledPinW, 255); //ปล่อยไฟ 255 เพราะใช้คำสั่ง analogWrite (ละเอียด)
-         analogWrite(ledPinY, 255);
-         analogWrite(ledPinWW, 255);
-         analogWrite(ledPinYY, 255);        
-     }
-     else {
-         digitalWrite(buzzerPin, 0);
-         analogWrite(ledPinW, 0);
-         analogWrite(ledPinY, 0);
-         analogWrite(ledPinWW, 0);
-         analogWrite(ledPinYY, 0);       
-     }
+    {
+        digitalWrite(buzzerPin, 1); //เปิดเสียงด้วยคำสั่ง digitalWrite (หยาบ 0 กับ 1)
+        analogWrite(ledPinW, 255); //ปล่อยไฟ 255 เพราะใช้คำสั่ง analogWrite (ละเอียด)
+        analogWrite(ledPinY, 255);
+        analogWrite(ledPinWW, 255);
+        analogWrite(ledPinYY, 255);        
+    }
+    else 
+    {
+        digitalWrite(buzzerPin, 0);
+        analogWrite(ledPinW, 0);
+        analogWrite(ledPinY, 0);
+        analogWrite(ledPinWW, 0);
+        analogWrite(ledPinYY, 0);       
+    }
 
   Serial.print("Analog reading = "); //แสดงบรรทัด
   Serial.println(flameReading); //แสดงข้อมูลตัวแปร flameReading   
