@@ -75,15 +75,15 @@ void loop(){
         { 
             digitalWrite(ledPinW, 1);
             digitalWrite(ledPinR, 1);
-            //digitalWrite(ledPinWW, 1);
             digitalWrite(ledPinRR, 1);
+            //digitalWrite(ledPinWW, 1);
         }
         else
         {
             digitalWrite(ledPinW, 0);
             digitalWrite(ledPinR, 0);
-            //digitalWrite(ledPinWW, 0);
             digitalWrite(ledPinRR, 0);
+            //digitalWrite(ledPinWW, 0);
         }
         //------------------------------------- Flame (การทำงาน)
         flameReading = analogRead(flamePin); 
@@ -108,7 +108,7 @@ void loop(){
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
             sevenSegment.displayStr(""); 
-            delay(10);         
+            delay(5);         
         }
         //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
         //Serial.print("Distance: "); 
@@ -169,12 +169,12 @@ void loop(){
         else 
         {
             digitalWrite(buzzerPin, 0);
-            analogWrite(ledPinW, 0);
+            //analogWrite(ledPinW, 0);
             analogWrite(ledPinY, 0);
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
             sevenSegment.displayStr(""); 
-            delay(10);       
+            delay(5);       
         }
         //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
         //Serial.print("Distance: "); 
