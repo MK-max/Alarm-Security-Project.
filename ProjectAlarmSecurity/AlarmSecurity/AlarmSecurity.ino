@@ -157,7 +157,7 @@ void loop(){
             sevenSegment.displayStr("S0S"); 
             delay(1000); 
             sevenSegment.displayStr("HELP"); 
-            delay(1000);        
+            delay(1000);     
         }
         else 
         {
@@ -180,10 +180,10 @@ void loop(){
     //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
     Serial.print("Distance: "); 
     Serial.println(distance); 
-    delay(1000);
+    //delay(100);
     //---------------------------------- Flame (แสดงใน Serial Monitor) 
     Serial.print("Analog reading = "); 
     Serial.println(flameReading);
-    delay(1000);    
+    //delay(100);    
 }
 
