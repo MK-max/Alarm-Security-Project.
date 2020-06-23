@@ -76,21 +76,18 @@ void loop(){
             digitalWrite(ledPinW, 1);
             digitalWrite(ledPinR, 1);
             digitalWrite(ledPinRR, 1);
-            //digitalWrite(ledPinWW, 1);
         }
         else
         {
             digitalWrite(ledPinW, 0);
             digitalWrite(ledPinR, 0);
             digitalWrite(ledPinRR, 0);
-            //digitalWrite(ledPinWW, 0);
         }
         //------------------------------------- Flame (การทำงาน)
         flameReading = analogRead(flamePin); 
         if (flameReading <= 500 ) 
         {
-            digitalWrite(buzzerPin, 1); 
-            //analogWrite(ledPinW, 255); 
+            digitalWrite(buzzerPin, 1);  
             analogWrite(ledPinY, 255);
             analogWrite(ledPinWW, 255);
             analogWrite(ledPinYY, 255);
@@ -103,7 +100,6 @@ void loop(){
         else 
         {
             digitalWrite(buzzerPin, 0);
-            //analogWrite(ledPinW, 0);
             analogWrite(ledPinY, 0);
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
@@ -142,14 +138,12 @@ void loop(){
         { 
             digitalWrite(ledPinW, 1);
             digitalWrite(ledPinR, 1);
-            //digitalWrite(ledPinWW, 1);
             digitalWrite(ledPinRR, 1);
         }
         else
         {
             digitalWrite(ledPinW, 0);
             digitalWrite(ledPinR, 0);
-            //digitalWrite(ledPinWW, 0);
             digitalWrite(ledPinRR, 0);
         }
         //------------------------------------- Flame (การทำงาน)
@@ -157,7 +151,6 @@ void loop(){
         if (flameReading <= 500 ) 
         {
             digitalWrite(buzzerPin, 1); 
-            //analogWrite(ledPinW, 255); 
             analogWrite(ledPinY, 255);
             analogWrite(ledPinWW, 255);
             analogWrite(ledPinYY, 255);
@@ -169,7 +162,6 @@ void loop(){
         else 
         {
             digitalWrite(buzzerPin, 0);
-            //analogWrite(ledPinW, 0);
             analogWrite(ledPinY, 0);
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
