@@ -1,25 +1,25 @@
 //------------------- Servo (library + ประกาศตัวแปร)
-#include <Servo.h>  
-Servo myservo; 
+#include <Servo.h>                                      // เรียกไลบรารี่ ชื่อ servo.h เข้ามาใช้ในโปรแกรม
+Servo myservo;                                          // สร้างตัว library เพื่อให้อดูโน่ควบคุม Servo ได้ 
 
-int degree = 0;
+int degree = 0;                                         // ตัวแปรจัดเก็บค่าองศาServo ให้กำหนดเริ่มต้นเท่ากับ 0 องศา
 //------------------- SevenSegment (library + ประกาศตัวแปร) 
-#include "TM1637.h" 
+#include "TM1637.h"                                     // เรียกไลบรารี่ ชื่อ TM1637.h เข้ามาใช้ในโปรแกรม
 
 const int CLK = 17;
 const int DIO = 16;
 
-TM1637 sevenSegment(CLK, DIO);
+TM1637 sevenSegment(CLK, DIO);                          // สร้างตัว library เพื่อจัดเก็บชนิดobjectและส่วนที่รับพารามิเตอร์ (CLK, DIO)
 //------------------- Ultrasonic (ประกาศตัวแปร)
 const int trigPin = 6; 
 const int echoPin = 5;
 
-int duration; 
-int distance; 
-int safetyDistance;
+int duration;                                           // ตัวแปรจัดเก็บค่าระยะเวลา
+int distance;                                           // ตัวแแปรจัดเก็บค่าระยะทาง
+int safetyDistance;                                     // ตัวแปรจัดเก็บค่าระยะที่ปลอดภัย
 //------------------- Flame (ประกาศตัวแปร)
-const int flamePin = 0; 
-int flameReading;
+const int flamePin = 0;                                 // ให้ตัวแปร  flamePin  เชื่อมต่อกับขา A0 เพื่อรับค่า
+int flameReading;                                       // ตัวแปรจัดเก็บค่าขาไฟที่รับค่าในการตรวจจับเปลวไป เพื่อแสดงผลการค่าออกมา
 //-------------------- ประกาศตัว Output (แสงไฟ+เสียง) 
 const int ledPinW = 12; 
 const int ledPinR = 13; 
@@ -31,15 +31,15 @@ const int buzzerPin = 9;
 
 void setup(){
     //----------------------- Servo (แสดงค่า)
-    myservo.attach(4,0,180);
+    myservo.attach(4,0,180);                            // กำหนดขาสัญญาณ(Pin4)ที่ Servo Motor ต่อกับ Arduino และกำหนดความกว้างในการหมุนที่ 0 องศาและ 180 องศา (pin,min,max)
     //----------------------- SevenSegment (แสดงค่า)
-    sevenSegment.init(); 
-    sevenSegment.set(7);  
+    sevenSegment.init();                                // จัดเก็บรับค่าใน()
+    sevenSegment.set(7);                                // BRIGHT 0-7; //ระดับความสว่าง0-7; 
     //----------------------- Ultrasonic (แสดงค่า)  
-    pinMode(trigPin, OUTPUT); 
-    pinMode(echoPin, INPUT);
+    pinMode(trigPin, OUTPUT);                           // ให้แสดงผล ค่าระยะวัตถุเข้าใกล้
+    pinMode(echoPin, INPUT);                            // ให้รับข้อมูล ค่่าระยะวัตถุเข้าใกล้
     //----------------------- Flame (แสดงค่า) 
-    pinMode(flamePin, INPUT);
+    pinMode(flamePin, INPUT); 
     //----------------------- Output แสงไฟ+เสียง (แสดงค่า)
     pinMode(ledPinW,OUTPUT); 
     pinMode(ledPinR,OUTPUT); 
@@ -49,29 +49,29 @@ void setup(){
     pinMode(ledPinYY, OUTPUT);
     pinMode(buzzerPin, OUTPUT);
     //------------------------     
-    Serial.begin(9600);                  
+    Serial.begin(9600); //กำหนดอัตราความเร็วในการสื่อสารกับอนูโน่ที่ 9600                     
 }
  
 void loop(){
     //---------------------------------------- Servo (ขาไป)
-    for(degree = 0; degree < 180; degree += 1) 
+    for(degree = 0; degree < 180; degree += 1)          // เริ่มต้นที่ 0 องศา เงื่อนไขคือหมุนไปไม่เกิน 180 องศา โดยให้เพิ่มที่ละ 1 องศา(ขาไป)
     {
-        myservo.write(degree); 
-        delay(50);
+        myservo.write(degree);                          // บอกให้Servoไปที่ตำแหน่งองศา () ตามที่ต้องการ ในเงื่อนไขของ for
+        delay(50);                                      // หน่วงเวลาการหมุน 0.1 วินาที
         //------------------------------------ Ultrasonic (การทำงาน) 
-        digitalWrite(trigPin, 0); 
-        delayMicroseconds(2); 
+        digitalWrite(trigPin, 0);                       //ตั้งค่า TrigPin ให้แสดงผลในสถานะปิดเป็นเวลา 2 ไมโครวินาที
+        delayMicroseconds(2);                           //ความหน่วงเวลา(หน่วงไว้แปปเดียวเพื่อการทำงานต่อไป)
 
-        digitalWrite(trigPin, 1); 
+        digitalWrite(trigPin, 1);                       //ตั้งค่า TrigPin ให้แสดงผลในสถานะเปิดเป็นเวลา 10 ไมโครวินาที
         delayMicroseconds(10);
-        digitalWrite(trigPin, 0); 
+        digitalWrite(trigPin, 0);                       //ตั้งค่า TrigPin ให้แสดงผลในสถานะปิด 
 
-        duration = pulseIn(echoPin , 1); 
+        duration = pulseIn(echoPin , 1);                //รับค่าหรืออ่าน echoPin เพื่อส่งคืนเวลาเดินทางของคลื่นเสียงเป็นไมโครวินาที
 
-        distance = duration*0.034/2; 
+        distance = duration*0.034/2;                    // คำนวนค่าระยะทาง
 
-        safetyDistance = distance;
-        if (safetyDistance <= 20)
+        safetyDistance = distance;                      //ให้ระยะที่ปลอดภัยรับค่าจากค่าระยะทางที่คำนวนมาแล้ว
+        if (safetyDistance <= 20)                       //ถ้าระยะท่่ปลอดภัยเข้ามาในระยะไม่เกินหรือเท่ากับ 20 cm.
         { 
             digitalWrite(ledPinW, 1);
             digitalWrite(ledPinR, 1);
@@ -84,8 +84,8 @@ void loop(){
             digitalWrite(ledPinRR, 0);
         }
         //------------------------------------- Flame (การทำงาน)
-        flameReading = analogRead(flamePin); 
-        if (flameReading <= 500 ) 
+        flameReading = analogRead(flamePin);            //กำหนดให้ flameReading อ่านค่าสัญญาณอนาล็อกที่ขา a0 จากตัวแปร flamePin 
+        if (flameReading <= 500 )                       //กำหนด ถ้า flameReading อ่านค่าได้ไม่เกินหรือเท่ากับ 500 (ดูที่จอ Serial Monitor)
         {
             digitalWrite(buzzerPin, 1);  
             analogWrite(ledPinY, 255);
@@ -93,7 +93,7 @@ void loop(){
             analogWrite(ledPinYY, 255);
             //--------------------------------- SevenSegment (การทำงาน)
             sevenSegment.displayStr("S0S"); 
-            delay(1000); 
+            delay(1000); //หน่วงเวลาในการแสดงผลของคำ 1 วินาที
             sevenSegment.displayStr("HELP"); 
             delay(1000);        
         }
@@ -105,19 +105,11 @@ void loop(){
             analogWrite(ledPinYY, 0);
             sevenSegment.displayStr(""); 
             delay(5);         
-        }
-        //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
-        //Serial.print("Distance: "); 
-        //Serial.println(distance); 
-        //delay(1000);
-        //---------------------------------- Flame (แสดงใน Serial Monitor) 
-        //Serial.print("Analog reading = "); 
-        //Serial.println(flameReading);
-        //delay(1000);                        
+        }                       
     }
     
     //----------------------------------------- Servo (ขากลับ)
-    for(degree = 180; degree >= 1; degree -= 1)
+    for(degree = 180; degree >= 1; degree -= 1)         // เริ่มต้นที่ 180 องศา เงื่อนไขคือหมุนกลับไปไม่เกิน 1 องศา โดยให้ลดที่ละ 1 องศา(ขากลับ)
     {
         myservo.write(degree);
         delay(50);
@@ -167,15 +159,7 @@ void loop(){
             analogWrite(ledPinYY, 0);
             sevenSegment.displayStr(""); 
             delay(5);       
-        }
-        //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
-        //Serial.print("Distance: "); 
-        //Serial.println(distance); 
-        //delay(500);
-        //---------------------------------- Flame (แสดงใน Serial Monitor) 
-        //Serial.print("Analog reading = "); 
-        //Serial.println(flameReading);
-        //delay(500);                           
+        }                          
     }
     //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
     Serial.print("Distance: "); 
