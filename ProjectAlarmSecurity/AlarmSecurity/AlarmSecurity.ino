@@ -57,7 +57,7 @@ void loop(){
     for(degree = 0; degree < 180; degree += 1)          // เริ่มต้นที่ 0 องศา เงื่อนไขคือหมุนไปไม่เกิน 180 องศา โดยให้เพิ่มที่ละ 1 องศา(ขาไป)
     {
         myservo.write(degree);                          // บอกให้Servoไปที่ตำแหน่งองศา () ตามที่ต้องการ ในเงื่อนไขของ for
-        delay(50);                                      // หน่วงเวลาการหมุน 0.1 วินาที
+        delay(40);                                      // หน่วงเวลาการหมุน 0.1 วินาที
         //------------------------------------ Ultrasonic (การทำงาน) 
         digitalWrite(trigPin, 0);                       //ตั้งค่า TrigPin ให้แสดงผลในสถานะปิดเป็นเวลา 2 ไมโครวินาที
         delayMicroseconds(2);                           //ความหน่วงเวลา(หน่วงไว้แปปเดียวเพื่อการทำงานต่อไป)
@@ -85,7 +85,7 @@ void loop(){
         }
         //------------------------------------- Flame (การทำงาน)
         flameReading = analogRead(flamePin);            //กำหนดให้ flameReading อ่านค่าสัญญาณอนาล็อกที่ขา a0 จากตัวแปร flamePin 
-        if (flameReading <= 500 )                       //กำหนด ถ้า flameReading อ่านค่าได้ไม่เกินหรือเท่ากับ 500 (ดูที่จอ Serial Monitor)
+        if (flameReading <= 500 )                       //กำหนด ถ้า flameReading อ่านค่าได้ไม่เกินหรือเท่ากับ 500 นาโนเมตร (ตรวจได้มากสุดถึง 1100 นาโนเมตร)
         {
             digitalWrite(buzzerPin, 1);  
             analogWrite(ledPinY, 255);
@@ -93,26 +93,26 @@ void loop(){
             analogWrite(ledPinYY, 255);
             //--------------------------------- SevenSegment (การทำงาน)
             sevenSegment.displayStr("S0S"); 
-            delay(1000); //หน่วงเวลาในการแสดงผลของคำ 1 วินาที
+            delay(1000);                                //หน่วงเวลาในการแสดงผลของคำ 1 วินาที
             sevenSegment.displayStr("HELP"); 
             delay(1000);        
         }
         else 
         {
-            digitalWrite(buzzerPin, 0);
+            digitalWrite(buzzerPin, 0);                 
             analogWrite(ledPinY, 0);
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
-            sevenSegment.displayStr(""); 
-            delay(5);         
-        }                       
+            sevenSegment.displayStr("");         
+        }               
     }
+    delay(100);                                        //หน่วงเวลาไว้ 0.1 วินาที เนื่องจากให้เวลาพักในการทำงานของการหมุนของมอเตอร์ช่วงขณะนึง ไม่งั้นมอเตอร์จะทำงานหนักมากเกินไป
     
     //----------------------------------------- Servo (ขากลับ)
     for(degree = 180; degree >= 1; degree -= 1)         // เริ่มต้นที่ 180 องศา เงื่อนไขคือหมุนกลับไปไม่เกิน 1 องศา โดยให้ลดที่ละ 1 องศา(ขากลับ)
     {
         myservo.write(degree);
-        delay(50);
+        delay(40);
         //------------------------------------ Ultrasonic (การทำงาน) 
         digitalWrite(trigPin, 0); 
         delayMicroseconds(2); 
@@ -157,17 +157,9 @@ void loop(){
             analogWrite(ledPinY, 0);
             analogWrite(ledPinWW, 0);
             analogWrite(ledPinYY, 0);
-            sevenSegment.displayStr(""); 
-            delay(5);       
-        }                          
+            sevenSegment.displayStr("");       
+        }                                                   
     }
-    //---------------------------------- Ultrasonic (แสดงใน Serial Monitor)
-    Serial.print("Distance: "); 
-    Serial.println(distance); 
-    //delay(100);
-    //---------------------------------- Flame (แสดงใน Serial Monitor) 
-    Serial.print("Analog reading = "); 
-    Serial.println(flameReading);
-    //delay(100);    
+    delay(100);   
 }
 
